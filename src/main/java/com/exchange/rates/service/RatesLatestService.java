@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.util.Map;
 
-@FeignClient(name = "data", url = "${rates.client.url}")
-public interface RatesService {
+@FeignClient(name = "ratesLatestData", url = "${latest.rates.url}")
+public interface RatesLatestService {
     @RequestMapping(method = RequestMethod.GET)
-    ResponseEntity<Map> getRates();
+    ResponseEntity<Map> getLatestRates();
 }

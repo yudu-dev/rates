@@ -6,10 +6,10 @@ import org.springframework.stereotype.Component;
 import java.util.Map;
 
 @Component
-public class RatesServiceImpl implements RatesService {
+public class RatesLatestServiceImpl implements RatesLatestService {
 
     @Override
-    public ResponseEntity<Map> getRates() {
+    public ResponseEntity<Map> getLatestRates() {
         return null;
     }
 

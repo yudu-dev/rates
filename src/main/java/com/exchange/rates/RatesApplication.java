@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 
 @SpringBootApplication
-@EnableFeignClients(basePackages = {"com.exchange.rates.client",
+@EnableFeignClients(basePackages = {"com.exchange.rates.service",
 		"com.exchange.rates.controller"})
 public class RatesApplication {
 

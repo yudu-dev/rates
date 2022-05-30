@@ -1,4 +1,4 @@
-package com.exchange.rates.client;
+package com.exchange.rates.service;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
@@ -6,10 +6,10 @@ import org.springframework.stereotype.Component;
 import java.util.Map;
 
 @Component
-public class GifFallbackImpl implements IGifClient {
+public class RatesServiceImpl implements RatesService {
 
     @Override
-    public ResponseEntity<Map> getGif() {
+    public ResponseEntity<Map> getRates() {
         return null;
     }
 

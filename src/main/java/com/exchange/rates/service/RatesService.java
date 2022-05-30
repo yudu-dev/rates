@@ -1,4 +1,4 @@
-package com.exchange.rates.client;
+package com.exchange.rates.service;
 
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.ResponseEntity;
@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.util.Map;
 
-@FeignClient(name = "data", url = "${feign.client.url}")
-public interface IGifClient {
+@FeignClient(name = "data", url = "${rates.client.url}")
+public interface RatesService {
     @RequestMapping(method = RequestMethod.GET)
-    ResponseEntity<Map> getGif();
+    ResponseEntity<Map> getRates();
 }

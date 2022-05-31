@@ -6,10 +6,10 @@ import lombok.Data;
 @Data
 public class GifDTO {
 
-    private DataPayLoad data;
+    private DataPayload data;
 
     @Data
-    public static class DataPayLoad {
+    public static class DataPayload {
         private String url;
     }
 

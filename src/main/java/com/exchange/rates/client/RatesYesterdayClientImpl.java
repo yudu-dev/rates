@@ -1,4 +1,4 @@
-package com.exchange.rates.service;
+package com.exchange.rates.client;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
@@ -6,10 +6,10 @@ import org.springframework.stereotype.Component;
 import java.util.Map;
 
 @Component
-public class RatesLatestServiceImpl implements RatesLatestService {
+public class RatesYesterdayClientImpl implements RatesYesterdayClient {
 
     @Override
-    public ResponseEntity<Map> getLatestRates() {
+    public ResponseEntity<Map> getYesterdayRates() {
         return null;
     }
 

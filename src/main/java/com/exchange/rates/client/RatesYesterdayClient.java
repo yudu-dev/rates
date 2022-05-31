@@ -1,4 +1,4 @@
-package com.exchange.rates.service;
+package com.exchange.rates.client;
 
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.ResponseEntity;
@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.util.Map;
 
-@FeignClient(name = "ratesLatestData", url = "${latest.rates.url}")
-public interface RatesLatestService {
+@FeignClient(name = "ratesYesterdayData", url = "${yesterday.rates.url}")
+public interface RatesYesterdayClient {
     @RequestMapping(method = RequestMethod.GET)
-    ResponseEntity<Map> getLatestRates();
+    ResponseEntity<Map> getYesterdayRates();
 }

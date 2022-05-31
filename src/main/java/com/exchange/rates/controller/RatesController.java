@@ -28,10 +28,12 @@ public class RatesController {
 
     @Value("${api_key}")
     private String apiKey;
-    @Value("${tag}")
-    private String tag;
+    @Value("${rich_tag}")
+    private String richTag;
+    @Value("${broke_tag}")
+    private String brokeTag;
     @GetMapping(value = "/rates")
     ResponseEntity<?> getLatestRates() {
-        return ResponseEntity.ok(gifClient.getGif(apiKey, tag));
+        return ResponseEntity.ok(gifClient.getRichGif(apiKey, richTag));
     }
 }

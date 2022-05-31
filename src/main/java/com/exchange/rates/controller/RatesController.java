@@ -4,11 +4,13 @@ import com.exchange.rates.service.BrokeGifService;
 import com.exchange.rates.service.RatesYesterdayService;
 import com.exchange.rates.service.RichGifService;
 import com.exchange.rates.service.RatesLatestService;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
+
 
 
 @RestController
@@ -30,6 +32,10 @@ public class RatesController {
     @GetMapping(value = "/rates", produces = MediaType.APPLICATION_JSON_VALUE)
     ResponseEntity<?> getLatestRates() {
         try {
+            String jsonString = String.valueOf(ratesLatestService.getLatestRates().getBody());
+            JSONObject obj = new JSONObject(jsonString);
+            String rates = obj.getJSONObject("rates").getString("RUB");
+            System.out.println(rates);
             return ResponseEntity.ok(richGifService.getRichGif().getBody());
         } catch (Exception e) {
             return (ResponseEntity<?>) ResponseEntity.notFound();

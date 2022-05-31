@@ -28,7 +28,7 @@ public class RatesGifController {
     @Value("${broke_tag}")
     private String brokeTag;
     @GetMapping(value = "/rates")
-    ResponseEntity<?> getLatestRates() {
+    ResponseEntity<?> getYesterdayRates() {
         return ResponseEntity.ok(gifClient.getRichGif(apiKey, richTag));
 
     }

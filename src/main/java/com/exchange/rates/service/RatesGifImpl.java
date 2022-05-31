@@ -8,10 +8,10 @@ import java.time.format.DateTimeFormatter;
 
 @Service
 @RequiredArgsConstructor
-public class RatesGifImpl implements RatesGifService {
+public class RatesGifImpl extends RatesGifService {
 
     @Override
-    public String yesterdayDateLink() {
+    public String getYesterdayDateLink() {
 
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         LocalDateTime now = LocalDateTime.now();
@@ -22,10 +22,10 @@ public class RatesGifImpl implements RatesGifService {
 
     }
 
-    @Override
-    public boolean compareTwoExchangeRates(double latestRate, double yesterdayRate) {
-        return latestRate > yesterdayRate;
-    }
+   // @Override
+   // public boolean compareTwoExchangeRates(double latestRate, double yesterdayRate) {
+   //     return latestRate > yesterdayRate;
+   // }
 
 
 

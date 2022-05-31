@@ -18,7 +18,8 @@ public class RatesController {
     private final GifClient gifClient;
 
     @Autowired
-    public RatesController(RatesLatestClient ratesLatestClient, RatesYesterdayClient ratesYesterdayClient,
+    public RatesController(RatesLatestClient ratesLatestClient,
+                           RatesYesterdayClient ratesYesterdayClient,
                            GifClient gifClient) {
         this.ratesLatestClient = ratesLatestClient;
         this.ratesYesterdayClient = ratesYesterdayClient;

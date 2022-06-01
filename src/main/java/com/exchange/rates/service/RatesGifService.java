@@ -66,7 +66,7 @@ public class RatesGifService {
         if (compareTwoExchangeRates) {
             return Objects.requireNonNull(gifClient.getRichGif(apiKey, richTag).getBody()).getData().getUrl();
         } else {
-            return Objects.requireNonNull(gifClient.getBrokeGif(apiKey, richTag).getBody()).getData().getUrl();
+            return Objects.requireNonNull(gifClient.getBrokeGif(apiKey, brokeTag).getBody()).getData().getUrl();
         }
     }
 

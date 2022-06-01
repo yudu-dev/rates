@@ -2,10 +2,8 @@ package com.exchange.rates.service;
 
 import com.exchange.rates.client.GifClient;
 import com.exchange.rates.client.OpenExchangeRatesClient;
-import com.exchange.rates.controller.dto.GifDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -64,11 +62,11 @@ public class RatesGifService {
     private String richTag;
     @Value("${broke_tag}")
     private String brokeTag;
-    public ResponseEntity<GifDTO> getRightGif(boolean compareTwoExchangeRates) {
+    public String getRightGif(boolean compareTwoExchangeRates) {
         if (compareTwoExchangeRates) {
-            return gifClient.getRichGif(apiKey, richTag);
+            return Objects.requireNonNull(gifClient.getRichGif(apiKey, richTag).getBody()).getData().getUrl();
         } else {
-            return gifClient.getBrokeGif(apiKey, brokeTag);
+            return Objects.requireNonNull(gifClient.getBrokeGif(apiKey, richTag).getBody()).getData().getUrl();
         }
     }
 

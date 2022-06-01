@@ -2,10 +2,11 @@ package com.exchange.rates.controller.dto;
 
 
 import lombok.Data;
+import java.util.Map;
 
 @Data
 public class RatesDTO {
 
-    private double Rate;
+    private Map<String, Double> rates;
 
 }

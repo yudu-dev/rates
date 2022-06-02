@@ -1,0 +1,22 @@
+server:
+  port: 9090
+
+client:
+  gif:
+    url: https://api.giphy.com/v1/gifs
+    api_key: zIRJDOJPsZNLdkIQ5TSaIfooqciuH19I
+  rates:
+    url: https://openexchangerates.org/api
+    app_id: c0aa01ac9ad94fdeba22ff975e08121c
+
+increase_tag: rich
+decrease_tag: broke
+
+currency:
+  base: USD
+  default: RUB
+
+spring:
+  cloud:
+    config.import-check.enabled: false
+  jackson.serialization.FAIL_ON_EMPTY_BEANS: false

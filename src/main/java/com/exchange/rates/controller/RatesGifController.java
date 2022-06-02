@@ -14,7 +14,7 @@ public class RatesGifController {
 
     @GetMapping(value = "/rates")
     public String getRightGif() {
-        return ratesGifService.getRightGif(ratesGifService.compareTwoExchangeRates());
+        return ratesGifService.getRightGif();
     }
 
 }

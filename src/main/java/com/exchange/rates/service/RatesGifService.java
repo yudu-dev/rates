@@ -32,18 +32,17 @@ public class RatesGifService {
         return formattedYesterdayDate + ".json";
     }
 
-    /**
-     * Сравнивает сегодняшний и вчерашний курсы валют
-     * @param latestRate сегодняшний курс валют
-     * @param yesterdayRate вчерашний курс валют
-     * @return true если курс по отношению к USD за сегодня стал выше вчерашнего, иначе false
-     */
+
     @Value("${app_id}")
     private String appId;
     @Value("${base}")
     private String base;
     @Value("${symbols}")
     private String symbols;
+    /**
+     * Сравнивает сегодняшний и вчерашний курсы валют
+     * @return true если курс по отношению к USD за сегодня стал выше вчерашнего, иначе false
+     */
     public boolean compareTwoExchangeRates() {
         Map<String, Double> latestRateMap = Objects.requireNonNull(openExchangeRatesClient
                                             .getLatestRates(appId, base, symbols)
@@ -62,12 +61,16 @@ public class RatesGifService {
     private String richTag;
     @Value("${broke_tag}")
     private String brokeTag;
-    public String getRightGif(boolean compareTwoExchangeRates) {
-        if (compareTwoExchangeRates) {
-            return Objects.requireNonNull(gifClient.getRichGif(apiKey, richTag).getBody()).getData().getUrl();
-        } else {
-            return Objects.requireNonNull(gifClient.getBrokeGif(apiKey, brokeTag).getBody()).getData().getUrl();
-        }
+
+    /**
+     * Возвращает ссылку на правильный GIF на основе метода compareTwoExchangeRates()
+     * @return GIF с тэгом Rich, если compareTwoExchangeRates() вернул TRUE, иначе - GIF с тэгом Broke
+     */
+    public String getRightGif() {
+        String tag = compareTwoExchangeRates()
+                ? richTag
+                : brokeTag;
+        return Objects.requireNonNull(gifClient.getGifByTag(apiKey, tag).getBody()).getData().getUrl();
     }
 
 }

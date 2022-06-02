@@ -9,9 +9,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 @FeignClient(name = "GifData", url = "${gif.client.url}")
 public interface GifClient {
     @GetMapping(value = "/random")
-    ResponseEntity<GifDTO> getRichGif(@RequestParam("api_key") String apiKey, @RequestParam("rich_tag") String tag);
-
-    @GetMapping(value = "/random")
-    ResponseEntity<GifDTO> getBrokeGif(@RequestParam("api_key") String apiKey, @RequestParam("broke_tag") String tag);
+    ResponseEntity<GifDTO> getGifByTag(@RequestParam("api_key") String apiKey, @RequestParam("tag") String tag);
 
 }

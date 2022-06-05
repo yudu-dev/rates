@@ -4,12 +4,8 @@ import com.exchange.rates.client.GifClient;
 import com.exchange.rates.client.OpenExchangeRatesClient;
 import com.exchange.rates.configuration.ApplicationProperties;
 import lombok.RequiredArgsConstructor;
-import org.apache.commons.io.IOUtils;
 import org.springframework.stereotype.Service;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.URL;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Map;
@@ -19,12 +15,10 @@ import java.util.Objects;
 @RequiredArgsConstructor
 public class RatesGifService {
 
-    private static final String GIPHY_STORAGE_URL_PATTERN = "https://i.giphy.com/media/%s/giphy.gif";
-
     private final OpenExchangeRatesClient openExchangeRatesClient;
     private final GifClient gifClient;
     private final ApplicationProperties properties;
-
+    private final GifDownloadService gifDownloadService;
     /**
      * Возвращает ссылку на правильный GIF на основе метода compareTwoExchangeRates()
      *
@@ -35,17 +29,8 @@ public class RatesGifService {
                 ? properties.getIncreaseTag()
                 : properties.getDecreaseTag();
 
-        var test = gifClient.getGifByTag(properties.getGifApiKey(), tag).getBody();
-        String id = test.getData().getId();
-        String url = GIPHY_STORAGE_URL_PATTERN.formatted(id);
-
-        byte[] result;
-        try (InputStream input = new URL(url).openStream()) {
-            result = IOUtils.toByteArray(input);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        return result;
+        var gifDTO = gifClient.getGifByTag(properties.getGifApiKey(), tag).getBody();
+        return gifDownloadService.getGifByDTO(gifDTO);
     }
 
     /**

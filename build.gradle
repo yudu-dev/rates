@@ -6,7 +6,6 @@ plugins {
 
 group = 'com.exchange'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '17'
 
 repositories {
 	mavenCentral()
@@ -14,6 +13,11 @@ repositories {
 
 ext {
 	set('springCloudVersion', "2021.0.3")
+}
+java {
+	toolchain {
+		languageVersion.set(JavaLanguageVersion.of(17))
+	}
 }
 
 dependencies {
@@ -37,8 +41,4 @@ dependencyManagement {
 	imports {
 		mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
 	}
-}
-
-tasks.named('test') {
-	useJUnitPlatform()
 }

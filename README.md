@@ -1,8 +1,8 @@
 # rates
 
-./gradlew clean build
+Для успешного запуска приложения необходимо выполнить следующие действия:
 
-docker build -t rates:latest .
-
-docker run -p 9090:9090 rates -n rates
+1. Очистить каталог сборки './gradlew clean build'
+2. Собрать новую сборку приложения 'docker build -t rates:latest .'
+3. Запустить вновь созданную сборку 'docker run -p 9090:9090 rates -n rates'
 
